@@ -1,0 +1,2 @@
+export const MATCH_LIST_UPDATE = 'MATCH_LIST_UPDATE';
+export const GET_MATCHES = 'GET_MATCHES';
