@@ -29,3 +29,23 @@ export function gotoMenu(menuItem) {
     }
 }
 
+export function gotoTasks() {
+    return (dispatch) => {
+        console.log("In tasks");
+        dispatch({
+            type: at.GOTO_TASKS
+        })
+    }
+}
+
+export function gotoMatches() {
+    return (dispatch) => {
+        console.log("goto matches");
+        dispatch({
+            type: at.GOTO_MATCHES
+        })
+    }   
+}
+
+
+

@@ -30,7 +30,7 @@ const FooterMenu = () => {
 
 const styles = StyleSheet.create({
     footerMenu: {
-        position: "relative",
+        position: "absolute",
         bottom: 0,
         width: "100%",
         borderTopWidth: 1,

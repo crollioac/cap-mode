@@ -3,17 +3,18 @@ import * as at from './actionTypes';
 import axios from 'axios';
 import * as mockData from "./mockData";
 
-export function getMatches(options) {
+export function getTasks(options) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            axios.get(`url`)
+            axios.get(`tasksurl`)
             .then(res => {
-                const { matches } = res;
-                dispatch({type: at.GET_MATCHES, matches});
+                const { tasks } = res;
+                dispatch({type: at.GET_TASKS, tasks});
             }).catch(err => {
-                console.log("in errorrrrrr");
-                const matches = mockData.MATCHES_LIST;
-                dispatch({type: at.GET_MATCHES, matches});
+               
+                const tasks = mockData.TASKS_LIST;
+                console.log("tasks in errorrrrrr", tasks);
+                dispatch({type: at.GET_TASKS, tasks});
             });
         });
     }

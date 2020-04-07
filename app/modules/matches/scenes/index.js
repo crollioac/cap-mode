@@ -7,7 +7,8 @@ import { Button } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import styles from "./styles";
+import { theme } from "../index";
+const { padding, color, fontSize, fontFamily, windowWidth, normalize } = theme;
 
 import * as actions from "../actions";
 
@@ -34,6 +35,34 @@ const Matches = () => {
             {/* {matches.map(match =>  />)} */}
         </FlatList>
     );
-}
+};
+
+
+const resizeMode = 'contain';
+
+const styles = StyleSheet.create({
+    container:{
+        width: "100%",
+        height: "100%",
+        position: "relative"
+    },
+  
+    bottomContainer:{
+        backgroundColor:"white",
+        paddingVertical: padding * 3,
+        shadowColor: "#000000",
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        shadowOffset: {
+            height: 1,
+            width: 0
+        }
+    },
+
+    buttonContainer:{
+        justifyContent:"center",
+        alignItems:"center"
+    }
+});
 
 export default Matches;

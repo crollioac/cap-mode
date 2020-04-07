@@ -5,7 +5,7 @@ import * as mockData from "./mockData";
 import { actions } from '../home';
 import * as utils from "./utils/utils";
 
-let initialState = { footerMenuList: [] };
+let initialState = { footerMenuList: [], isHomeView: true, isTasksView: false };
 
 const globalReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -16,13 +16,20 @@ const globalReducer = (state = initialState, action) => {
                 ['footerMenuList', JSON.stringify(footerMenuList)]
             ]);
 
-            return {...state, footerMenuList };
+            return { ...state, footerMenuList };
 
         case at.GOTO_MENU_ITEM:
             let { menuItem } = action;
             footerMenuList = state.footerMenuList;
             footerMenuList = utils.resetFooterIcons(footerMenuList, menuItem);
-            return {...state, footerMenuList };
+            return { ...state, footerMenuList };
+
+        case at.GOTO_TASKS:
+            console.log("tasks ------------------------------------");
+            return { ...state, isHomeView: false, isTasksView: true };
+        case at.GOTO_MATCHES:
+            console.log("goto matches ------------------------------------");
+            return { ...state, isHomeView: true, isTasksView: false };
 
         default:
             return state;

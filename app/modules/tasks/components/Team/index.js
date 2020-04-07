@@ -1,14 +1,10 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
-// import { images } from "../../../../assets/images";
+
 function Team({team}) {
-
-    let flagUrl = team.flagUrl;
-
-    console.log(flagUrl);
     return (
         <View>
-            <Image source={flagUrl}></Image>
+            <Image source={team.team_image_url}></Image>
             <Text>{team.name}</Text>
         </View>
     )

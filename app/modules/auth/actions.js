@@ -1,6 +1,8 @@
 
-import { auth, database, provider } from "../../config/firebase";
-import * as t from './actionTypes';
+// import { auth, database, provider } from "../../config/firebase";
+import * as at from './actionTypes';
+import * as mockData from './mockData';
+import axios from 'axios'; 
 
 //Register the user using email and password
 export function register(data) {
@@ -14,7 +16,7 @@ export function register(data) {
 
                     userRef.child(user.uid).update({...user})
                         .then(() => {
-                            dispatch({type: t.LOGGED_IN, user});
+                            dispatch({type: at.LOGGED_IN, user});
                             resolve(user)
                         })
                         .catch((error) => reject({message: error}));
@@ -32,7 +34,7 @@ export function createUser(user) {
 
             userRef.child(user.uid).update({...user})
                 .then(() => {
-                    dispatch({type: t.LOGGED_IN, user});
+                    dispatch({type: at.LOGGED_IN, user});
                     resolve(user)
                 })
                 .catch((error) => reject({message: error}));
@@ -57,12 +59,28 @@ export function login(data) {
                             //if the user exist in the DB, replace the user variable with the returned snapshot
                             if (exists) user = snapshot.val();
 
-                            if (exists) dispatch({type: t.LOGGED_IN, user});
+                            if (exists) dispatch({type: at.LOGGED_IN, user});
                             resolve({exists, user});
                         })
                         .catch((error) => reject(error));
                 })
                 .catch((error) => reject(error));
+        });
+    }
+}
+
+export function loginUser(userCredentials) {
+    return (dispatch) => {
+        return new Promise((resolve, reject) => {
+            axios.post(`loginurl`, userCredentials)
+            .then(res => {
+                const { authResponse } = res;
+                dispatch({type: at.LOGGED_IN, authResponse});
+            }).catch(err => {
+                console.log("in login errorrrrrr");
+                const { userData } = mockData;
+                dispatch({type: at.LOGGED_IN, userData});
+            });
         });
     }
 }
@@ -106,7 +124,7 @@ export function signInWithFacebook(fbToken,) {
                             //if the user exist in the DB, replace the user variable with the returned snapshot
                             if (exists) user = snapshot.val();
 
-                            if (exists) dispatch({type: t.LOGGED_IN, user});
+                            if (exists) dispatch({type: at.LOGGED_IN, user});
                             resolve({exists, user});
                         })
                         .catch((error) => reject(error));
@@ -131,16 +149,16 @@ export function checkLoginStatus(callback) {
                         //if the user exist in the DB, replace the user variable with the returned snapshot
                         if (exists) user = snapshot.val();
 
-                        if (exists) dispatch({type: t.LOGGED_IN, user});
+                        if (exists) dispatch({type: at.LOGGED_IN, user});
                         callback(exists, isLoggedIn);
                     })
                     .catch((error) => {
                         //unable to get user
-                        dispatch({type: t.LOGGED_OUT});
+                        dispatch({type: at.LOGGED_OUT});
                         callback(false, false);
                     });
             } else {
-                dispatch({type: t.LOGGED_OUT});
+                dispatch({type: at.LOGGED_OUT});
                 callback(false, isLoggedIn)
             }
         });
