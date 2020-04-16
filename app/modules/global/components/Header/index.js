@@ -14,7 +14,7 @@ const Header = () => {
         dispatch(auth.loginUser());
     };
 
-    console.log(isLoggedIn, "isLoggedIn");
+    // console.log(isLoggedIn, "isLoggedIn");
     return (
         <View style={styles.headerMenu}>
             {

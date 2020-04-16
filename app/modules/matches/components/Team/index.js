@@ -5,7 +5,7 @@ function Team({team}) {
 
     let flagUrl = team.flagUrl;
 
-    console.log(flagUrl);
+    // console.log(flagUrl);
     return (
         <View>
             <Image source={flagUrl}></Image>

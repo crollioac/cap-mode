@@ -1,8 +1,9 @@
 import { AsyncStorage } from 'react-native';
 
 import * as at from './actionTypes';
+import * as TASKS from './constants';
 
-let initialState = { tasks: {} };
+let initialState = { tasks: {}, task: { key: TASKS.LANDING_VIEW } };
 
 const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -13,7 +14,15 @@ const tasksReducer = (state = initialState, action) => {
                 ['tasks', JSON.stringify(tasks)]
             ]);
 
-            return {...state, tasks };
+            return { ...state, tasks };
+        case at.NEW_TASK:
+            let { task } = action;
+            // Save token and data to Asyncstorage
+            AsyncStorage.multiSet([
+                ['tasks', JSON.stringify(tasks)]
+            ]);
+
+            return { ...state, task };
 
         default:
             return state;

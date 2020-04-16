@@ -11,7 +11,7 @@ export function getFooterMenu(options) {
                 const { footerMenuList } = res;
                 dispatch({type: at.GET_FOOTER_MENU, footerMenuList});
             }).catch(err => {
-                console.log("in Footer Menu errorrrrrr");
+                // console.log("in Footer Menu errorrrrrr");
                 const footerMenuList = mockData.FOOTER_MENU;
                 dispatch({type: at.GET_FOOTER_MENU, footerMenuList});
             });
@@ -29,18 +29,21 @@ export function gotoMenu(menuItem) {
     }
 }
 
-export function gotoTasks() {
+export function gotoTasks(match) {
     return (dispatch) => {
-        console.log("In tasks");
+        // console.log("In tasks");
         dispatch({
-            type: at.GOTO_TASKS
+            type: at.GOTO_TASKS,
+            data: {
+                match
+            }
         })
     }
 }
 
 export function gotoMatches() {
     return (dispatch) => {
-        console.log("goto matches");
+        // console.log("goto matches");
         dispatch({
             type: at.GOTO_MATCHES
         })

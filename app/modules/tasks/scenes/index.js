@@ -5,23 +5,25 @@ import { View, StyleSheet, Text } from "react-native";
 
 import { Button } from 'react-native-elements'
 
+import * as TASKS from '../constants';
 import LandingView from './LandingVIew';
-// import Play11 from './Play11';
-// import Toss from './Toss';
-// import OpeningBatsmen from './OpeningBatsmen';
-// import OpeningBowler from './OpeningBowler';
-// import NextBatsman from './NextBastman';
-// import NextBowler from './NextBowler';
+import TaskView from './TaskVIew';
+
 // const { color } = theme;
 
 const Tasks = () => {
     const tasksReducer = useSelector(state => state.tasksReducer);
-    const dispatch = useDispatch();
+    const globalReducer = useSelector(state => state.globalReducer);
+    const { match } = globalReducer;
+    let displayComponent = <LandingView match={match} />;
+    const { task } = tasksReducer;
+    if (task.key !== TASKS.LANDING_VIEW) {
+        displayComponent = <TaskView task={{ ...task, ...match }} />
+    }
 
-    const comp = <LandingView />;
     return (
         <View style={styles.container}>
-            {comp}
+            {displayComponent}
         </View>
     );
 };

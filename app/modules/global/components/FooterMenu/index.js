@@ -16,7 +16,7 @@ const FooterMenu = () => {
 
     const { footerMenuList } = globalReducer;
 
-    console.log(footerMenuList);
+    // console.log(footerMenuList);
     return (
         <View style={styles.footerMenu}>
             <View style={styles.buttonContainer}>

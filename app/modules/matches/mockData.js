@@ -5,14 +5,14 @@ export const MATCHES_LIST = [
     team1:  {
       name: "India",
       flagUrl: "india_flag.png",
-      captian: "Virat Kohli",
+      captain: "Virat Kohli",
       displayName: "IND",
       captainDisplayName: "VK"
     },
     team2:  {
       name: "Pakistan",
       flagUrl: "pakistan_flag.png",
-      captian: "Babar Azam",
+      captain: "Babar Azam",
       displayName: "PAK",
       captainDisplayName: "BA"
     },
@@ -24,14 +24,14 @@ export const MATCHES_LIST = [
     team1:  {
       name: "RCB",
       flagUrl: "india_flag.png",
-      captian: "Virat Kohli",
+      captain: "Virat Kohli",
       displayName: "IND",
       captainDisplayName: "VK"
     },
     team2:  {
       name: "KKR",
       flagUrl: "pakistan_flag.png",
-      captian: "Babar Azam",
+      captain: "Babar Azam",
       displayName: "PAK",
       captainDisplayName: "BA"
     },
@@ -43,14 +43,14 @@ export const MATCHES_LIST = [
     team1:  {
       name: "India",
       flagUrl: "india_flag.png",
-      captian: "Virat Kohli",
+      captain: "Virat Kohli",
       displayName: "IND",
       captainDisplayName: "VK"
     },
     team2:  {
       name: "Pakistan",
       flagUrl: "pakistan_flag.png",
-      captian: "Babar Azam",
+      captain: "Babar Azam",
       displayName: "PAK",
       captainDisplayName: "BA"
     },
@@ -62,14 +62,14 @@ export const MATCHES_LIST = [
     team1:  {
       name: "India",
       flagUrl: "india_flag.png",
-      captian: "Virat Kohli",
+      captain: "Virat Kohli",
       displayName: "IND",
       captainDisplayName: "VK"
     },
     team2:  {
       name: "Pakistan",
       flagUrl: "pakistan_flag.png",
-      captian: "Babar Azam",
+      captain: "Babar Azam",
       displayName: "PAK",
       captainDisplayName: "BA"
     },
@@ -81,14 +81,14 @@ export const MATCHES_LIST = [
     team1:  {
       name: "India",
       flagUrl: "india_flag.png",
-      captian: "Virat Kohli",
+      captain: "Virat Kohli",
       displayName: "IND",
       captainDisplayName: "VK"
     },
     team2:  {
       name: "Pakistan",
       flagUrl: "pakistan_flag.png",
-      captian: "Babar Azam",
+      captain: "Babar Azam",
       displayName: "PAK",
       captainDisplayName: "BA"
     },

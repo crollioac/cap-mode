@@ -11,7 +11,7 @@ export function getMatches(options) {
                 const { matches } = res;
                 dispatch({type: at.GET_MATCHES, matches});
             }).catch(err => {
-                console.log("in errorrrrrr");
+                // console.log("in errorrrrrr");
                 const matches = mockData.MATCHES_LIST;
                 dispatch({type: at.GET_MATCHES, matches});
             });

@@ -14,13 +14,13 @@ const { padding, color, fontSize, fontFamily, windowWidth, normalize } = theme;
 import * as actions from "../../actions";
 import * as glActions from "../../../global/actions";
 
-import Task from "../../components/Task";
+import TaskTlie from "../../components/TaskTile";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ceil } from 'react-native-reanimated';
-const { getTasks } = actions;
+const { getTasks, changeTask } = actions;
 const { gotoMatches } = glActions;
 
-const Tasks = () => {
+const LandingView = () => {
     const tasksReducer = useSelector(state => state.tasksReducer);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -44,7 +44,7 @@ const Tasks = () => {
         backIcon,
         tasksBody
     } = styles;
-    console.log("TASKSSSSSSSSSSSSSSSSSSSSSSSSS =====>", tasksReducer);
+    // console.log("TASKSSSSSSSSSSSSSSSSSSSSSSSSS =====>", tasksReducer);
     return (
         <View style={container}>
             <View style={tasksHeader}>
@@ -62,14 +62,13 @@ const Tasks = () => {
             <View style={tasksBody}>
                 <Text>Pre Match Decisions</Text>
                 <View style={taskContainer}>
-                    {preMatchStart.map(task => <Task key={task.id} task={task}></Task>)}
+                    {preMatchStart.map(task => <TaskTlie key={task.id} task={task}></TaskTlie>)}
                 </View>
                 <Text>Post Match Decisions</Text>
                 <View style={taskContainer}>
-                    {postMatchStart.map(task => <Task key={task.id} task={task}></Task>)}
+                    {postMatchStart.map(task => <TaskTlie key={task.id} task={task}></TaskTlie>)}
                 </View>
             </View>
-
         </View>
     );
 };
@@ -114,4 +113,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Tasks;
+export default LandingView;

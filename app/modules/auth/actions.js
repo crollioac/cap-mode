@@ -77,7 +77,7 @@ export function loginUser(userCredentials) {
                 const { authResponse } = res;
                 dispatch({type: at.LOGGED_IN, authResponse});
             }).catch(err => {
-                console.log("in login errorrrrrr");
+                // console.log("in login errorrrrrr");
                 const { userData } = mockData;
                 dispatch({type: at.LOGGED_IN, userData});
             });

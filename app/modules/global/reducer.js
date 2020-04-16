@@ -25,10 +25,11 @@ const globalReducer = (state = initialState, action) => {
             return { ...state, footerMenuList };
 
         case at.GOTO_TASKS:
-            console.log("tasks ------------------------------------");
-            return { ...state, isHomeView: false, isTasksView: true };
+            // console.log("tasks ------------------------------------");
+            let { data: { match } } = action;
+            return { ...state, match, isHomeView: false, isTasksView: true };
         case at.GOTO_MATCHES:
-            console.log("goto matches ------------------------------------");
+            // console.log("goto matches ------------------------------------");
             return { ...state, isHomeView: true, isTasksView: false };
 
         default:

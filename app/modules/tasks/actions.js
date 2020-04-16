@@ -13,10 +13,16 @@ export function getTasks(options) {
             }).catch(err => {
                
                 const tasks = mockData.TASKS_LIST;
-                console.log("tasks in errorrrrrr", tasks);
+                // console.log("tasks in errorrrrrr", tasks);
                 dispatch({type: at.GET_TASKS, tasks});
             });
         });
+    }
+}
+
+export function changeTask(newTask) {
+    return (dispatch) => {               
+        dispatch({type: at.NEW_TASK, task: newTask});    
     }
 }
 

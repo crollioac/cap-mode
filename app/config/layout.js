@@ -14,7 +14,7 @@ const Layout = () => {
 
     const { isHomeView, isTasksView } = globalSelector;
 
-    console.log("==========================================>", globalSelector);
+    // console.log("==========================================>", globalSelector);
     return (
         <View style={styles.layoutStyle} >
             <Header />
