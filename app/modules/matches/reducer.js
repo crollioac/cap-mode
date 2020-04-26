@@ -14,17 +14,20 @@ const matchesReducer = (state = initialState, action) => {
                 ['matches', JSON.stringify(matches)]
             ]);
 
-            return {...state, matches };
+            return { ...state, matches };
 
         case at.MATCH_LIST_UPDATE:
-            
             matches = action.matches;
             let prevMatchList = state.matches;
             prevMatchList = [...prevMatchList, ...matches];
             AsyncStorage.multiSet([
                 ['matches', JSON.stringify(prevMatchList)]
             ]);
-            return {...state, matches: prevMatchList};
+            return { ...state, matches: prevMatchList };
+
+        case at.SET_SELECTED_MATCH:
+            const { match } = action;
+            return { ...state, match };
 
         default:
             return state;

@@ -13,12 +13,16 @@ const Header = () => {
     const loginUser = () => {
         dispatch(auth.loginUser());
     };
+    const {
+        loginText,
+        headerMenu
+    } = styles;
 
     // console.log(isLoggedIn, "isLoggedIn");
     return (
-        <View style={styles.headerMenu}>
+        <View style={headerMenu}>
             {
-                isLoggedIn ? <Text>{user.displayName}</Text> : <Text onPress={() => loginUser()}>Login</Text>
+                isLoggedIn ? <Text style={loginText}>{user.displayName}</Text> : <Text style={loginText} onPress={() => loginUser()}>Login</Text>
             }
         </View>
     )
@@ -28,7 +32,9 @@ const styles = StyleSheet.create({
         marginTop: 30,
         width: "100%",
         borderBottomWidth: 1,
-        borderBottomColor: "#000"
+        borderBottomColor: "#000",
+        backgroundColor: "#061ea7",
+        padding: 10
     },
     buttonContainer: {
         flexDirection: "row",
@@ -39,6 +45,9 @@ const styles = StyleSheet.create({
     },
     iconStyle: {
         fontSize: 24
+    },
+    loginText: {
+        color: "#ffffff"
     }
 });
 

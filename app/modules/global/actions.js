@@ -2,6 +2,7 @@
 import * as at from './actionTypes';
 import axios from 'axios';
 import * as mockData from "./mockData";
+import * as contestMockData from "../../modules/contests/mockData";
 
 export function getFooterMenu(options) {
     return (dispatch) => {
@@ -29,16 +30,35 @@ export function gotoMenu(menuItem) {
     }
 }
 
-export function gotoTasks(match) {
+export function gotoTasks(contestId) {
     return (dispatch) => {
-        // console.log("In tasks");
-        dispatch({
-            type: at.GOTO_TASKS,
-            data: {
-                match
-            }
-        })
+        return new Promise((resolve, reject) => {
+            axios.get(`contesturl/${contestId}`)
+            .then(res => {
+                const { contests } = res;
+                dispatch({
+                    type: at.GOTO_TASKS,
+                    contests
+                })
+            }).catch(err => {
+                // console.log("in Footer Menu errorrrrrr");
+                const contests = contestMockData.CONTESTS_LIST;
+                dispatch({
+                    type: at.GOTO_TASKS,
+                    contests
+                })
+            });
+        });
     }
+}
+
+export function gotoContests() {
+    return (dispatch) => {
+        // console.log("goto matches");
+        dispatch({
+            type: at.GOTO_CONTESTS
+        })
+    }   
 }
 
 export function gotoMatches() {

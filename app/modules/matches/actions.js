@@ -19,3 +19,12 @@ export function getMatches(options) {
     }
 }
 
+export function setSelectedMatch(match) {
+    return (dispatch) => {
+        // console.log("In tasks");
+        dispatch({
+            type: at.SET_SELECTED_MATCH,
+            match
+        });
+    }
+}

@@ -5,21 +5,22 @@ import Header from "../modules/global/components/Header";
 import Footer from "../modules/global/components/FooterMenu";
 import Routes from "./routes";
 import Matches from '../modules/matches/scenes';
-import Tasks from '../modules/tasks/scenes';
+// import Tasks from '../modules/tasks/scenes';
+import Contests from '../modules/contests/scenes';
 import globalReducer from "../modules/global/reducer";
 
 
 const Layout = () => {
     const globalSelector = useSelector(state => state.globalReducer);
 
-    const { isHomeView, isTasksView } = globalSelector;
+    const { isHomeView, isContestsView } = globalSelector;
 
     // console.log("==========================================>", globalSelector);
     return (
         <View style={styles.layoutStyle} >
             <Header />
              { isHomeView ?  <Matches  /> : null }
-             { isTasksView ?  <Tasks  /> : null }
+             { isContestsView ?  <Contests  /> : null }
             <Footer />
         </View>
     )

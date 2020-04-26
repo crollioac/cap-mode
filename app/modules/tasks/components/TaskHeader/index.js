@@ -12,10 +12,12 @@ const TaskHeader = ({task}) => {
 const styles = StyleSheet.create({
     header: {
         width: "100%",
-        textAlign: "center",
         padding: 20,
         borderBottomWidth: 1,
-        borderBottomColor: "#ccc",
+        borderBottomColor: "#ccc"
+    },
+    headerName: {
+        textAlign: "center",
         fontSize: 30
     }
 });

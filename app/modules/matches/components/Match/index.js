@@ -3,51 +3,77 @@ import { useDispatch } from 'react-redux';
 import { View, Image, Button, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Team from "../Team";
-import { gotoTasks } from '../../../global/actions';
-const Match = ({ match }) => {
+import { gotoContests } from '../../../global/actions';
+import { setSelectedMatch } from '../../actions';
+import * as utils from '../../utils';
 
+const Match = ({ match }) => {
     const dispatch = useDispatch();
     const showTasks = (match) => {
-        dispatch(gotoTasks(match));
+        dispatch(gotoContests());
+        dispatch(setSelectedMatch(match));
     }
 
     const { item } = match; // this is because of flatlist
 
+    const {
+        matchBlock,
+        mLine1,
+        mLine2,
+        tournamentName,
+        timeLeft
+    } = styles;
+    const timeObj = utils.getTimeLeft(item.startTime);
+
     return (
-        <View>
+        <View style={matchBlock}>
             <TouchableOpacity
-                style={styles.match}
-                onPress={() => showTasks(item)}>
-                <Team
-                    style={styles.team1}
-                    team={item.team1}></Team>
-                <Text style={styles.vs}> VS </Text>
-                <Team
-                    style={styles.team1}
-                    team={item.team2}></Team>
+                onPress={() => showTasks(item)}
+            >
+                <View style={mLine1}>
+                    <Text style={tournamentName}>{item.tournamentName}</Text>
+                </View>
+
+                <View style={mLine2}>
+                    <Team
+                        team={item.team1}></Team>
+                    <Text style={timeLeft}> {timeObj.timeString} </Text>
+                    <Team
+                        team={item.team2}></Team>
+                </View>
+
             </TouchableOpacity>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
-    match: {
+    matchBlock: {
+        width: "100%",
         padding: 10,
+        backgroundColor: "#ffffff",
+        marginBottom: 10
+    },
+    timeLeft: {
+        width: "30%",
+        color: "#f00",
+        textAlign: "center"
+    },
+    mLine1: {
+        padding: 5,
+        width: "100%",
         borderBottomWidth: 1,
-        borderBottomColor: "#000",
+        borderBottomColor: "#f2f2f2"
+    },
+    mLine2: {
         flexDirection: "row",
         justifyContent: "space-around",
-        alignItems: "center"
-
+        alignItems: "center",
+        paddingVertical: 10
     },
-    team1: {
-        width: "45%"
-    },
-    vs: {
-        width: "10%"
-    },
-    team2: {
-        width: "45%"
+    tournamentName: {
+        fontSize: 12,
+        color: "#828282"
     }
 });
 

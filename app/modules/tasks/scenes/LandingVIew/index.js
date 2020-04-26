@@ -12,13 +12,13 @@ import { theme } from "../../index";
 const { padding, color, fontSize, fontFamily, windowWidth, normalize } = theme;
 
 import * as actions from "../../actions";
-import * as glActions from "../../../global/actions";
+import * as cActions from "../../../contests/actions";
 
 import TaskTlie from "../../components/TaskTile";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ceil } from 'react-native-reanimated';
 const { getTasks, changeTask } = actions;
-const { gotoMatches } = glActions;
+const { goBackToContests } = cActions;
 
 const LandingView = () => {
     const tasksReducer = useSelector(state => state.tasksReducer);
@@ -27,8 +27,8 @@ const LandingView = () => {
         dispatch(getTasks());
     }, []);
 
-    const goBackToMatches = () => {
-        dispatch(gotoMatches());
+    const goToContests = () => {
+        dispatch(goBackToContests());
     }
 
     const { tasks } = tasksReducer;
@@ -50,7 +50,7 @@ const LandingView = () => {
             <View style={tasksHeader}>
                 <TouchableOpacity
                     style={backButton}
-                    onPress={() => goBackToMatches()}
+                    onPress={() => goToContests()}
                 >
                     <FontAwesomeIcon
                         style={backIcon}

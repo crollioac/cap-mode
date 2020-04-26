@@ -13,13 +13,14 @@ import TaskView from './TaskVIew';
 
 const Tasks = () => {
     const tasksReducer = useSelector(state => state.tasksReducer);
-    const globalReducer = useSelector(state => state.globalReducer);
-    const { match } = globalReducer;
+    const matchesReducer = useSelector(state => state.matchesReducer);
+    const { match } = matchesReducer;
     let displayComponent = <LandingView match={match} />;
     const { task } = tasksReducer;
     if (task.key !== TASKS.LANDING_VIEW) {
         displayComponent = <TaskView task={{ ...task, ...match }} />
     }
+    console.log(task, "============================================================");
 
     return (
         <View style={styles.container}>

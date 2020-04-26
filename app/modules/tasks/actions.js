@@ -26,3 +26,7 @@ export function changeTask(newTask) {
     }
 }
 
+export function updatePlayerSelection(player) {
+    
+}
+

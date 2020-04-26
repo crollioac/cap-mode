@@ -9,15 +9,18 @@ import OpeningBowler from '../OpeningBowler';
 import NextBatsman from '../NextBastman';
 import NextBowler from '../NextBowler';
 import { gotoTasks } from '../../../global/actions';
+import { changeTask } from '../../actions';
 import { useDispatch } from 'react-redux';
 
 const TaskView = ({ task }) => {
     const dispatch = useDispatch();
     const goBackToTasks = () => {
-        dispatch(gotoTasks());
+        dispatch(changeTask({key: TASKS.LANDING_VIEW}));
     }
 
     let displayComponent = null;
+
+    const { backIcon, backButton } = styles;
     switch (task.key) {
         case TASKS.PLAY_11: displayComponent = <Play11 task={task} />;
             break;
@@ -39,7 +42,7 @@ const TaskView = ({ task }) => {
 
     return (
         <View>
-            {/* <TouchableOpacity
+            <TouchableOpacity
                 style={backButton}
                 onPress={() => goBackToTasks()}
             >
@@ -47,7 +50,7 @@ const TaskView = ({ task }) => {
                     style={backIcon}
                     name="arrow-left"
                 />
-            </TouchableOpacity> */}
+            </TouchableOpacity>
             {displayComponent}
         </View>
     )

@@ -11,29 +11,38 @@ import { theme } from "../index";
 const { padding, color, fontSize, fontFamily, windowWidth, normalize } = theme;
 
 import * as actions from "../actions";
+import Tasks from "../../tasks/scenes";
 
-import Match from "../components/Match";
-const { getMatches } = actions;
+import Contest from "../components/Contest";
+const { getContests } = actions;
 
 // const { color } = theme;
 
-const Matches = () => {
-    const matchesReducer = useSelector(state => state.matchesReducer);
+const Contests = () => {
+    const contestsReducer = useSelector(state => state.contestsReducer);
+    const tasksReducer = useSelector(state => state.tasksReducer);
     const dispatch = useDispatch();
+    const { isTasksView } = tasksReducer;
+
     useEffect(() => {
-        dispatch(getMatches());
+        if (!isTasksView) {
+            dispatch(getContests());
+        }
     }, []);
 
-    const { matches } = matchesReducer;
+    const { contests } = contestsReducer;
 
     return (
-        <FlatList
-        data={matches}
-        renderItem={(match) => <Match key={match.matchId} match={match} />}
-        keyExtractor={match => match.matchId}
-        style={styles.container}>
-            {/* {matches.map(match =>  />)} */}
+
+        isTasksView ? <Tasks /> : <FlatList
+            data={contests}
+            renderItem={(contest) => <Contest key={contest.contestId} contest={contest} />}
+            keyExtractor={contest => contest.id}
+            style={styles.container}>
+            {/* {contests.map(contest =>  />)} */}
         </FlatList>
+
+
     );
 };
 
@@ -41,16 +50,16 @@ const Matches = () => {
 const resizeMode = 'contain';
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         width: "100%",
         height: "100%",
         position: "relative",
         backgroundColor: "#f2f2f2",
-        padding: 10
+        paddingBottom: 30
     },
-  
-    bottomContainer:{
-        backgroundColor:"white",
+
+    bottomContainer: {
+        backgroundColor: "white",
         paddingVertical: padding * 3,
         shadowColor: "#000000",
         shadowOpacity: 0.8,
@@ -61,10 +70,10 @@ const styles = StyleSheet.create({
         }
     },
 
-    buttonContainer:{
-        justifyContent:"center",
-        alignItems:"center"
+    buttonContainer: {
+        justifyContent: "center",
+        alignItems: "center"
     }
 });
 
-export default Matches;
+export default Contests;

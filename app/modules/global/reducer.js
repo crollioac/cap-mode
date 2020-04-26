@@ -5,7 +5,7 @@ import * as mockData from "./mockData";
 import { actions } from '../home';
 import * as utils from "./utils/utils";
 
-let initialState = { footerMenuList: [], isHomeView: true, isTasksView: false };
+let initialState = { footerMenuList: [], isHomeView: true, isContestsView: false };
 
 const globalReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -24,14 +24,14 @@ const globalReducer = (state = initialState, action) => {
             footerMenuList = utils.resetFooterIcons(footerMenuList, menuItem);
             return { ...state, footerMenuList };
 
-        case at.GOTO_TASKS:
+        case at.GOTO_CONTESTS:
+            let { contests } = action;
             // console.log("tasks ------------------------------------");
-            let { data: { match } } = action;
-            return { ...state, match, isHomeView: false, isTasksView: true };
+            return { ...state, isHomeView: false, isContestsView: true };
         case at.GOTO_MATCHES:
             // console.log("goto matches ------------------------------------");
-            return { ...state, isHomeView: true, isTasksView: false };
-
+            return { ...state, isHomeView: true, isContestsView: false };
+            
         default:
             return state;
     }

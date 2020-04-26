@@ -16,7 +16,8 @@ const TaskTile = ({ task }) => {
     console.log("Task =====> ", task);
 
     const {
-        taskTile
+        taskTile,
+        taskName
     } = styles;
 
     return (
@@ -28,7 +29,7 @@ const TaskTile = ({ task }) => {
                     style={backIcon}
                     name="arrow-left"
                 /> */}
-                <Text>{task.name}</Text>
+                <Text style={taskName}>{task.name}</Text>
 
             </TouchableOpacity>
 
@@ -44,8 +45,10 @@ const styles = StyleSheet.create({
         width: 80,
         padding: 10,
         borderWidth: 1,
-        borderColor: "#000",
-        fontSize: 20
+        borderColor: "#000"
+    },
+    taskName: {
+        fontSize: 16
     }
 });
 
